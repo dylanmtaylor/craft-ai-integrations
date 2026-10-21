@@ -37,6 +37,7 @@ docs: add LAYOUT.md
 - **Keep `ai-core` small.** It uses serde only, with no I/O and no async runtime, and it must compile
   for wasm. Desktop-only code belongs in `ai-native`.
 - **No unsafe code.** The workspace forbids it.
+- **Time goes through `chrono`** (workspace dependency). Never hand-roll UTC/calendar conversion (days-to-date algorithms, leap-year math); a crate owns only its output format string.
 - **No secrets in the repo or in logs.** Keys go through the secret stores in `ai-native`.
 - **Do not claim more than was run.** Say plainly what was tested live, what was tested against a
   scripted server, and what is only proposed.
